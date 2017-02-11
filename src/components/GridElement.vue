@@ -1,0 +1,141 @@
+<template>
+  <a class="store" :href="store.url" target="_blank" v-bind:class="{ featured: store.visibility === 1 }" v-bind:style="{ backgroundColor: store.color }">
+  <figure>
+    <img :src="store.logo"/>
+    <figcaption> {{store.slogan}}
+      <span class="go-to-store" > visitar loja</span>
+    </figcaption>
+  </figure>
+</a>
+</template>
+
+<script>
+export default {
+  name: 'grid-element',
+  props: ['store'],
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
+<style scope>
+.store{
+  position: relative;
+  margin: 0.5vw;
+  display: table;
+  width: 23.5vw;
+  height: 23.5vw;
+  border-radius: 3px;
+  background-color: $c6;
+  color: $c3;
+  text-align: center;
+  float: left;
+
+  figure{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  perspective(1px) translate3d(-50%, -50%,0);
+    width: 80%;
+    max-width: 300px;
+    transition: all 0.2s linear;
+    -webkit-font-smoothing: antialiased;
+
+    img{
+      max-width: 250px;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption{
+      margin-top: 1.2em;
+    }
+
+  }
+
+  &.featured{
+    width: 48vw;
+    height: 23.5vw;
+
+  }
+
+
+  .go-to-store{
+    position: absolute;
+    margin: 1.5em auto 0;
+    left: 50%;
+    display: table;
+    opacity: 0;
+    transform:  perspective(1px) translate3d(-50%, -40%,0);
+    transition: all 0.2s linear;
+  }
+
+  &:hover{
+
+    figure{
+      transform:  perspective(1px) translate3d(-50%, -60%,0);
+    }
+
+    .go-to-store{
+      opacity: 1;
+      transform:  perspective(1px) translate3d(-50%, -40%,0);
+      background-color: $c4;
+    }
+
+  }
+
+}
+
+@media(min-width:1305px){
+
+  .store{
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+
+    &.featured{
+      width: 619px;
+      height: 300px;
+    }
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  figcaption{
+    display: none;
+  }
+}
+
+@media screen and(max-width: 540px){
+  .store{
+    width: 48vw;
+    height: 300px;
+
+    &.featured{
+      width: 100%;
+      max-width: 100%;
+      height: 250px;
+
+    }
+  }
+
+  figcaption{
+    display: none;
+  }
+}
+
+@media screen and(max-width: 400px){
+  .store{
+    width: 100%;
+    max-width: 100%;
+
+    &.featured{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+</style>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>stores</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,500" rel="stylesheet">
+    <!-- <link href="/assets/shared.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+      let config = {
+        apiKey: "AIzaSyC1RBjaLlMMlEv1KWR-FzCOLEUSjtN_9xM",
+        authDomain: "bitcoin-stores.firebaseapp.com",
+        databaseURL: "https://bitcoin-stores.firebaseio.com",
+        storageBucket: "bitcoin-stores.appspot.com",
+        messagingSenderId: "363497435398"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
+
+  <style>
+    body{
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      font-smoothing: antialiased;
+      font-smooth: always;
+      -webkit-tap-highlight-color: transparent;
+      background: #f1f4f9;
+    }
+
+    .container{
+      margin: 0 auto;
+      width: 98%;
+      max-width: 1215px;
+    }
+  </style>
+</html>
