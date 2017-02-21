@@ -4,20 +4,28 @@
       LOGO
     </a>
     <form class="search">
-      <input type="search"/>
+      <input type="search" v-model="queryString"/>
     </form>
     <button class="menu-button"><span>Menu</span></button>
   </header>
 </template>
 
 <script>
+import eventHub from '../eventHub.js';
+
 export default {
   name: 'navigation',
   data () {
     return {
+      queryString: ''
+    };
+  },
+  watch: {
+    'queryString': val => {
+      eventHub.$emit('searching', val);
     }
   }
-}
+};
 </script>
 
 <style scope>

@@ -5,7 +5,9 @@
 </template>
 
 <script>
-import GridElement from './GridElement'
+import GridElement from './GridElement';
+import eventHub from '../eventHub.js';
+import _ from 'lodash';
 
 export default {
   name: 'collection',
@@ -14,14 +16,30 @@ export default {
   },
   data () {
     return {
-    }
+    };
   },
+  created: function () {
+    eventHub.$on('searching', string => {
+      console.log('created', this, string);
+      // if (!string){
+      //
+      // }
+      //
+      // this.stores = _.filter(this.stores, store => store.name.indexOf(string) >= 0);
+    });
+  },
+  // computed: {
+  //   stores: () => {
+  //     console.log('computed', this);
+  //     return _.orderBy(this.fbStores, 'name');
+  //   }
+  // },
   firebase: function () {
     return {
       stores: firebase.database().ref('stores').orderByChild('visibility')
-    }
+    };
   }
-}
+};
 </script>
 
 <style scope>
